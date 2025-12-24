@@ -1,6 +1,7 @@
 import "./Home.css";
 import { motion } from "framer-motion";
 import { Link, useNavigate } from "react-router-dom";
+import profileImg from "../assets/profile.png"; // ✅ FIXED IMAGE IMPORT
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
@@ -12,7 +13,7 @@ const fadeUp = {
 };
 
 function Home() {
-  const navigate = useNavigate(); // ✅ correct hook
+  const navigate = useNavigate();
 
   return (
     <section className="home-wrapper">
@@ -43,6 +44,7 @@ function Home() {
             <Link to="/projects" className="btn primary">
               View Projects
             </Link>
+
             <motion.a
               href="/resume/Aditya_Rana_Resume.pdf"
               download
@@ -52,8 +54,6 @@ function Home() {
             >
               Download Resume
             </motion.a>
-
-
           </div>
 
           {/* SOCIALS */}
@@ -65,6 +65,7 @@ function Home() {
             >
               LinkedIn
             </a>
+
             <a
               href="https://github.com/adityarana2002"
               target="_blank"
@@ -72,6 +73,7 @@ function Home() {
             >
               GitHub
             </a>
+
             <a href="#" aria-label="Instagram">
               Instagram
             </a>
@@ -85,7 +87,7 @@ function Home() {
           transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
         >
           <div className="image-frame">
-            <img src="/profile.png" alt="Aditya" />
+            <img src={profileImg} alt="Aditya" /> {/* ✅ FIXED */}
           </div>
         </motion.div>
       </div>
@@ -174,7 +176,6 @@ function Home() {
           Let’s Build Something Great Together 🚀
         </motion.h2>
 
-        {/* Contact ME BUTTON */}
         <motion.button
           className="btn primary large"
           whileHover={{ scale: 1.1 }}
