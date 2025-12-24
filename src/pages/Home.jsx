@@ -88,6 +88,7 @@ function Home() {
           <div className="image-frame">
             {/* ✅ VERCEL SAFE IMAGE */}
             <img src="/profile.png" alt="Aditya" />
+            
           </div>
         </motion.div>
       </div>
