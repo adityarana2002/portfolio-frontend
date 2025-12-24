@@ -1,7 +1,6 @@
 import "./Home.css";
 import { motion } from "framer-motion";
 import { Link, useNavigate } from "react-router-dom";
-import profileImg from "../assets/profile.png"; // ✅ FIXED IMAGE IMPORT
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
@@ -87,7 +86,8 @@ function Home() {
           transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
         >
           <div className="image-frame">
-            <img src={profileImg} alt="Aditya" /> {/* ✅ FIXED */}
+            {/* ✅ VERCEL SAFE IMAGE */}
+            <img src="/profile.png" alt="Aditya" />
           </div>
         </motion.div>
       </div>
