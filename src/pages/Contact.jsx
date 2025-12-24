@@ -10,6 +10,7 @@ const Contact = () => {
   });
 
   const [status, setStatus] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -17,6 +18,7 @@ const Contact = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
     setStatus("Sending...");
 
     try {
@@ -38,7 +40,10 @@ const Contact = () => {
         setStatus("Failed to send message ❌");
       }
     } catch (error) {
+      console.error(error);
       setStatus("Server error ❌");
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -50,7 +55,8 @@ const Contact = () => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
       >
-        {/* LEFT */}
+
+        {/* LEFT INFO */}
         <div className="contact-info">
           <span className="contact-badge">Contact</span>
           <h1>
@@ -59,8 +65,7 @@ const Contact = () => {
 
           <p className="contact-text">
             Whether it’s a project opportunity, collaboration, or a technical
-            discussion — feel free to reach out. I’m always open to meaningful
-            conversations and professional growth.
+            discussion — feel free to reach out.
           </p>
 
           <div className="contact-meta">
@@ -103,8 +108,12 @@ const Contact = () => {
             />
           </div>
 
-          <button type="submit" className="btn primary large">
-            Send Message
+          <button
+            type="submit"
+            className="btn primary large"
+            disabled={loading}
+          >
+            {loading ? "Sending..." : "Send Message"}
           </button>
 
           {status && <p className="form-status">{status}</p>}
