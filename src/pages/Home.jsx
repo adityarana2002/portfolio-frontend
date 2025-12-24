@@ -86,8 +86,8 @@ function Home() {
           transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
         >
           <div className="image-frame">
-            {/* ✅ VERCEL SAFE IMAGE */}
-            <img src="/profile.png" alt="Aditya" />
+       
+            <img src="/Profile.png" alt="Aditya" />
             
           </div>
         </motion.div>
