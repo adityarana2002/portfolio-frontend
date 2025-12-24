@@ -14,7 +14,7 @@ const About = () => {
         {/* LEFT IMAGE */}
         <div className="about-image">
           <div className="image-frame">
-            <img src="/profile.png" alt="Aditya Rana" />
+            <img src="/Profile.png" alt="Aditya Rana" />
           </div>
         </div>
 
