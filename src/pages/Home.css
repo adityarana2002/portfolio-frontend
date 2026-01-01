@@ -15,11 +15,9 @@
   overflow-x: hidden;
   color: #1a1a1a;
   padding: clamp(60px, 8vw, 120px) 16px;
-
-  /* Soft neutral background (no purple dominance) */
   background:
-    radial-gradient(circle at top left, #f6f6f6, transparent 40%),
-    radial-gradient(circle at bottom right, #f0f0f0, transparent 40%),
+    radial-gradient(circle at top left, #f3e7ff, transparent 40%),
+    radial-gradient(circle at bottom right, #e0f7ff, transparent 40%),
     #ffffff;
 }
 
@@ -35,9 +33,7 @@
   align-items: center;
 }
 
-/* ================================
-   HERO CONTENT
-================================ */
+/* HERO CONTENT */
 .badge {
   display: inline-block;
   padding: 8px 18px;
@@ -55,7 +51,7 @@
 }
 
 .hero-content h1 span {
-  background: linear-gradient(90deg, #6b5cff, #b26fd8);
+  background: linear-gradient(90deg, #7b5cff, #ff6fd8);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -73,9 +69,7 @@
   color: #444;
 }
 
-/* ================================
-   ACTION BUTTONS
-================================ */
+/* ACTIONS */
 .hero-actions {
   margin-top: 30px;
   display: flex;
@@ -93,23 +87,21 @@
 }
 
 .btn.primary {
-  background: linear-gradient(90deg, #6b5cff, #b26fd8);
+  background: linear-gradient(90deg, #7b5cff, #ff6fd8);
   color: white;
 }
 
 .btn.outline {
   background: transparent;
-  border: 1px solid #6b5cff;
-  color: #6b5cff;
+  border: 1px solid #7b5cff;
+  color: #7b5cff;
 }
 
 .btn.large {
   padding: 16px 42px;
 }
 
-/* ================================
-   SOCIAL LINKS
-================================ */
+/* SOCIALS */
 .socials {
   margin-top: 25px;
   display: flex;
@@ -119,17 +111,18 @@
 
 .socials a {
   font-weight: 600;
-  color: #6b5cff;
+  color: #7b5cff;
   text-decoration: none;
 }
 
 /* ================================
-   IMAGE + 3D TILT (PURE WHITE)
+   IMAGE + 3D TILT (PURE WHITE – NO BORDER)
 ================================ */
 .hero-image {
   display: flex;
   justify-content: center;
   align-items: center;
+  background: #ffffff;
 }
 
 .image-tilt {
@@ -138,17 +131,18 @@
   will-change: transform;
 }
 
-/* CLEAN WHITE IMAGE CARD */
+/* ✅ NO BORDER, NO GRADIENT */
 .image-frame {
   width: min(80vw, 360px);
   height: min(80vw, 360px);
-  border-radius: 28px;
+  border-radius: 30px;
   overflow: hidden;
 
-  background: #ffffff; /* 🔥 forced white */
+  background: #ffffff;        /* PURE WHITE */
+  padding: 0;                 /* 🔥 REMOVE BORDER */
 
   box-shadow:
-    0 25px 45px rgba(0, 0, 0, 0.16);
+    0 25px 45px rgba(0, 0, 0, 0.15);
 
   transform-style: preserve-3d;
 }
@@ -206,7 +200,7 @@
 .service-card {
   padding: clamp(24px, 4vw, 36px);
   border-radius: 26px;
-  background: rgba(255, 255, 255, 0.95);
+  background: rgba(255, 255, 255, 0.85);
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
 }
 
@@ -246,8 +240,10 @@
   .socials {
     justify-content: center;
   }
+}
 
-  /* Disable tilt on mobile */
+/* Disable tilt on mobile */
+@media (max-width: 900px) {
   .image-tilt {
     transform: none !important;
   }

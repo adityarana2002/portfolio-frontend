@@ -103,7 +103,7 @@ function Home() {
               GitHub
             </a>
 
-            <a href="#" aria-label="Instagram">
+            <a href="https://www.instagram.com/affable__aadi?igsh=bGlicmRrZXd2dm9r" aria-label="Instagram">
               Instagram
             </a>
           </div>
