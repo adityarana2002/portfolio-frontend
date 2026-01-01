@@ -1,6 +1,7 @@
 import "./Home.css";
 import { motion } from "framer-motion";
 import { Link, useNavigate } from "react-router-dom";
+import { useRef } from "react";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
@@ -13,12 +14,42 @@ const fadeUp = {
 
 function Home() {
   const navigate = useNavigate();
+  const tiltRef = useRef(null);
+
+  const handleMouseMove = (e) => {
+    const card = tiltRef.current;
+    if (!card) return;
+
+    const rect = card.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+
+    const centerX = rect.width / 2;
+    const centerY = rect.height / 2;
+
+    const rotateX = ((y - centerY) / centerY) * -10;
+    const rotateY = ((x - centerX) / centerX) * 10;
+
+    card.style.transform = `
+      rotateX(${rotateX}deg)
+      rotateY(${rotateY}deg)
+      scale(1.05)
+    `;
+  };
+
+  const handleMouseLeave = () => {
+    if (!tiltRef.current) return;
+    tiltRef.current.style.transform =
+      "rotateX(0deg) rotateY(0deg) scale(1)";
+  };
 
   return (
     <section className="home-wrapper">
 
       {/* HERO */}
       <div className="hero-container">
+
+        {/* LEFT CONTENT */}
         <motion.div
           className="hero-content"
           initial="hidden"
@@ -55,7 +86,6 @@ function Home() {
             </motion.a>
           </div>
 
-          {/* SOCIALS */}
           <div className="socials">
             <a
               href="https://www.linkedin.com/in/aditya-rana-48657a240/"
@@ -79,18 +109,24 @@ function Home() {
           </div>
         </motion.div>
 
-        {/* IMAGE */}
+        {/* RIGHT IMAGE WITH 3D TILT */}
         <motion.div
           className="hero-image"
           animate={{ y: [0, -15, 0] }}
           transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
         >
-          <div className="image-frame">
-       
-            <img src="/Profile.png" alt="Aditya" />
-            
+          <div
+            className="image-tilt"
+            ref={tiltRef}
+            onMouseMove={handleMouseMove}
+            onMouseLeave={handleMouseLeave}
+          >
+            <div className="image-frame">
+              <img src="/Profile.png" alt="Aditya Rana" />
+            </div>
           </div>
         </motion.div>
+
       </div>
 
       {/* TECH STACK */}
@@ -115,7 +151,7 @@ function Home() {
         </div>
       </section>
 
-      {/* WHAT I DO */}
+      {/* SERVICES */}
       <section className="services">
         <h2 className="section-title">What I Do</h2>
 
