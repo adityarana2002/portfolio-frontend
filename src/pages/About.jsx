@@ -59,12 +59,12 @@ const About = () => {
           </p>
 
           <div className="about-actions">
-             <Link to="/projects" className="btn primary">
+            <a href="/projects" className="btn primary large">
               View My Work
-            </Link>
-             <Link to="/contact" className="btn primary">
-              Let's Connect
-            </Link>
+            </a>
+            <a href="/contact" className="btn outline large">
+              Let’s Connect
+            </a>
           </div>
         </div>
       </motion.div>
